@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東京七日遊行程規劃 (2025/1/20-1/26)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f0f0 0%, #e8dfd8 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #9d8b8b;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        
+        .date-range {
+            text-align: center;
+            color: #b5a5a5;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #b5a5a5;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+        
+        .day-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .day-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #e8dfd8;
+        }
+        
+        .day-title {
+            background: linear-gradient(135deg, #c9b5a8 0%, #b5a5a5 100%);
+            color: white;
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .day-subtitle {
+            color: #9d8b8b;
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+        
+        .day-date {
+            color: #a89989;
+            font-size: 1em;
+            margin-top: 8px;
+        }
+        
+        .energy-bar-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #faf8f7;
+            border-radius: 12px;
+            border-left: 4px solid #c9b5a8;
+        }
+        
+        .energy-label {
+            color: #7a6a6a;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .energy-bar {
+            background: #e8dfd8;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .energy-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #90EE90, #FFD700, #FF6347);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease;
+        }
+        
+        .energy-low { background: linear-gradient(90deg, #90EE90, #98FB98) !important; }
+        .energy-medium { background: linear-gradient(90deg, #FFD700, #FFA500) !important; }
+        .energy-high { background: linear-gradient(90deg, #FF6347, #DC143C) !important; }
+        
+        .day-status {
+            background: #fff9e6;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #d4b896;
+        }
+        
+        .status-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .status-text {
+            color: #8a7a5a;
+            font-weight: 600;
+        }
+        
+        .time-box {
+            background: #fff0f0;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #d4a8a8;
+        }
+        
+        .time-title {
+            font-weight: bold;
+            color: #8a5a5a;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .time-content {
+            color: #9a6a6a;
+            line-height: 1.8;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #d4c4b8, #c9b5a8);
+        }
+        
+        .station {
+            position: relative;
+            margin-bottom: 0;
+        }
+        
+        .station::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 4px solid #c9b5a8;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .station.first::before {
+            width: 24px;
+            height: 24px;
+            left: -52px;
+            top: 16px;
+            border-width: 5px;
+            border-color: #9d8b8b;
+        }
+        
+        .station.last::before {
+            width: 24px;
+            height: 24px;
+            left: -52px;
+            top: 16px;
+            border-width: 5px;
+            border-color: #9d8b8b;
+        }
+        
+        .station-content {
+            background: #faf8f7;
+            padding: 20px 25px;
+            border-radius: 15px;
+            border-left: 4px solid #d4c4b8;
+            margin-bottom: 20px;
+        }
+        
+        .station-time {
+            color: #d4a8a8;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .station-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #7a6a6a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .map-icon {
+            display: inline-block;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .map-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .station-address {
+            font-size: 0.9em;
+            color: #a89989;
+            margin-bottom: 10px;
+        }
+        
+        .station-note {
+            background: #fff9e6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #8a7a5a;
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+        
+        .transport {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 0;
+        }
+        
+        .transport-content {
+            background: #e8dfd8;
+            padding: 18px 25px;
+            border-radius: 12px;
+            border-left: 4px solid #c9b5a8;
+        }
+        
+        .transport-icon {
+            display: inline-block;
+            font-size: 1.5em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .transport-title {
+            font-weight: bold;
+            color: #7a6a6a;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .transport-details {
+            color: #8a7a7a;
+            line-height: 1.8;
+            margin-left: 35px;
+        }
+        
+        .transport-option {
+            margin: 5px 0;
+        }
+        
+        .route-info {
+            color: #7a6a6a;
+            font-weight: 600;
+        }
+        
+        .walk {
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .walk-content {
+            background: #e8f4e8;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border-left: 4px solid #a8c9a8;
+            color: #5a7a5a;
+        }
+        
+        .walk-icon {
+            display: inline-block;
+            font-size: 1.3em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .walk-text {
+            display: inline;
+            font-weight: 600;
+        }
+        
+        .kimono-notice {
+            background: linear-gradient(135deg, #ffd4e5 0%, #f5e6f0 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 3px solid #e8c4d8;
+        }
+        
+        .kimono-notice .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .kimono-notice .text {
+            color: #8a5a7a;
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+        
+        .tips-box {
+            background: #fff9e6;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 4px solid #d4b896;
+        }
+        
+        .tips-title {
+            font-weight: bold;
+            color: #8a7a5a;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .tips-content {
+            color: #9a8a6a;
+            line-height: 1.8;
+        }
+        
+        .suggestions-box {
+            background: #e6f3ff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border-left: 4px solid #8abadb;
+        }
+        
+        .suggestions-title {
+            font-weight: bold;
+            color: #5a7a9a;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .suggestions-content {
+            color: #6a8aaa;
+            line-height: 1.8;
+        }
+        
+        .suggestion-item {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .suggestion-item::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+        
+        .info-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .info-title {
+            color: #9d8b8b;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8dfd8;
+        }
+        
+        .info-item {
+            background: #faf8f7;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #c9b5a8;
+        }
+        
+        .info-item h4 {
+            color: #7a6a6a;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .info-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-item li {
+            color: #8a7a7a;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .info-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #b5a5a5;
+        }
+        
+        .price {
+            color: #a85a5a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>東京七日遊行程</h1>
+        <div class="date-range">2025年1月20日(一) - 1月26日(日)</div>
+        <div class="subtitle">清晰路線 · 順暢銜接 · 輕鬆出遊</div>
+        
+        <!-- Day 1 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 1</div>
+                <div class="day-subtitle">抵達日 · 前往住宿</div>
+                <div class="day-date">1月20日(一)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-low" style="width: 20%;">⭐ (20%) 輕鬆</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 非常輕鬆,只有移動和check-in</span>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">18:30</div>
+                        <div class="station-name">
+                            成田國際機場抵達
+                            <a href="https://www.google.com/maps/place/Narita+International+Airport" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">入境後建議購買Suica/PASMO卡,儲值¥10,000</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚄</span>成田機場 → 高田馬場
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">成田機場站</span> 搭Skyliner → <span class="route-info">日暮里站</span>(36分)<br>
+                            → 搭JR山手線 → <span class="route-info">高田馬場站</span>(15分) <span class="price">¥2,630</span><br>
+                            預計20:30左右抵達住宿
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">~20:30</div>
+                        <div class="station-name">
+                            FL レジデンス高田馬場 (住宿)
+                            <a href="https://www.google.com/maps/search/FL+レジデンス高田馬場+1-chōme-8-13+Shimoochiai" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-8-13 Shimoochiai, Shinjuku City</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    今天只是移動日,抵達住宿後早點休息!如果還有精神,可以去附近的便利商店(7-11、全家)採買飲料零食。1月下旬東京平均溫度5-10度,記得帶好保暖衣物。
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 2</div>
+                <div class="day-subtitle">池袋 · 秋葉原 · 上野</div>
+                <div class="day-date">1月21日(二)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-medium" style="width: 60%;">⭐⭐⭐ (60%) 中等</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 適中,主要是逛街購物,可依體力調整</span>
+            </div>
+            
+            <div class="time-box">
+                <div class="time-title">⏰ 今日時間規劃</div>
+                <div class="time-content">
+                    <strong>建議起床: 7:00-7:30</strong><br>
+                    7:00-8:00 化妝整理 (1hr)<br>
+                    8:10 出門
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">9:00</div>
+                        <div class="station-name">
+                            太陽城 Sunshine City
+                            <a href="https://www.google.com/maps/place/Sunshine+City" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">3-chōme-1-1 Higashiikebukuro, Toshima City</div>
+                        <div class="station-note">從高田馬場搭JR山手線到池袋(8分,¥170)</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 8分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">10:00</div>
+                        <div class="station-name">
+                            東武百貨 池袋本店
+                            <a href="https://www.google.com/maps/place/Tobu+Department+Store+Ikebukuro" target="_blank" class="map-icon">📍</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 8分鐘回太陽城</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:00</div>
+                        <div class="station-name">
+                            陽光60瞭望台 TENBOU-PARK
+                            <a href="https://www.google.com/maps/place/SKY+CIRCUS+Sunshine+60+Observatory" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">サンシャイン60ビル 60F</div>
+                        <div class="station-note">營業時間: 11:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>池袋 → 秋葉原
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">池袋站</span> 搭JR山手線 → <span class="route-info">秋葉原站</span> | 20分鐘 <span class="price">¥170</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">13:00</div>
+                        <div class="station-name">
+                            秋葉原電器街
+                            <a href="https://www.google.com/maps/place/Akihabara+Electric+Town" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">動漫、電器、扭蛋天堂!</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">14:00</div>
+                        <div class="station-name">
+                            大創 DAISO 秋葉原店
+                            <a href="https://www.google.com/maps/search/ダイソー+秋葉原" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">百元商店,5層樓超好逛!營業時間: 10:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>秋葉原 → 上野
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">秋葉原站</span> 搭JR山手線 → <span class="route-info">上野站</span> | 3分鐘 <span class="price">¥150</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">15:30</div>
+                        <div class="station-name">
+                            阿美橫丁
+                            <a href="https://www.google.com/maps/place/Ameya-Yokocho" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">4-chōme-7-10 Ueno, Taito City</div>
+                        <div class="station-note">藥妝、零食、衣服超便宜!</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 2分鐘(在阿美橫丁內)</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">15:45</div>
+                        <div class="station-name">
+                            松本清 上野阿美橫丁店
+                            <a href="https://www.google.com/maps/search/マツモトキヨシ+上野アメ横" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">💳 免稅藥妝店!滿¥5,000即可退稅。營業時間: 10:00-22:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 3分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">16:30</div>
+                        <div class="station-name">
+                            唐吉訶德 上野阿美橫丁店
+                            <a href="https://www.google.com/maps/search/ドン・キホーテ+上野アメ横店" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">24小時營業!藥妝、零食、電器超便宜</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    今天主要是逛街購物,可依體力調整停留時間。大創秋葉原店有5層樓超好逛!唐吉訶德東西很多,建議預留1-1.5小時。如果買太多可以用車站置物櫃寄放。
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 3</div>
+                <div class="day-subtitle">淺草 · 晴空塔(和服日)</div>
+                <div class="day-date">1月22日(三)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-high" style="width: 65%;">⭐⭐⭐⭐ (65%) 中高</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">⚠️</span>
+                <span class="status-text">行程狀態: 偏滿,穿和服會比較累,但景點集中。1月溫度約5-10度,穿和服記得加保暖內搭</span>
+            </div>
+            
+            <div class="kimono-notice">
+                <div class="icon">👘</div>
+                <div class="text">
+                    今天穿和服!建議9:00或9:30到愛和服店換裝<br>
+                    下午5:00前歸還和服,然後繼續晴空塔行程<br>
+                    ⚠️ 1月較冷,和服店會提供保暖內搭,記得穿發熱衣
+                </div>
+            </div>
+            
+            <div class="time-box">
+                <div class="time-title">⏰ 今日時間規劃</div>
+                <div class="time-content">
+                    <strong>建議起床: 7:00</strong> (要早起化妝!)<br>
+                    7:00-8:00 化妝整理 (1hr) - 要化美美的拍照!<br>
+                    8:10 出門<br>
+                    💡 <strong>記得預約愛和服雷門店 9:00 或 9:30!</strong>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">9:00-9:30</div>
+                        <div class="station-name">
+                            愛和服 雷門店 (換裝)
+                            <a href="https://www.google.com/maps/place/愛和服+雷門店" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">東京都台東区雷門2-17-9, Relink KAMINARIMON 4F</div>
+                        <div class="station-note">
+                            從高田馬場搭東西線→日本橋站→轉銀座線→淺草站(約30分)<br>
+                            淺草站1號出口步行3分鐘<br>
+                            換裝時間約30-40分鐘
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 2分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">10:00</div>
+                        <div class="station-name">
+                            淺草寺
+                            <a href="https://www.google.com/maps/place/Senso-ji+Temple" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">2-chōme-3-1 Asakusa, Taito City</div>
+                        <div class="station-note">雷門、仲見世通、本堂都要拍!開放時間: 6:00-17:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:30</div>
+                        <div class="station-name">
+                            Yoroshi Cosmetics
+                            <a href="https://www.google.com/maps/search/Yoroshi+Cosmetics+浅草" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-18-1 Asakusa, Taito City</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 3分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">12:30</div>
+                        <div class="station-name">
+                            櫻田(午餐)
+                            <a href="https://www.google.com/maps/search/櫻田+浅草" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-15-12 Kaminarimon, Taito City</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">14:00</div>
+                        <div class="station-name">
+                            淺草文化觀光中心
+                            <a href="https://www.google.com/maps/place/Asakusa+Culture+Tourist+Information+Center" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">8樓免費展望台可俯瞰淺草寺全景!穿和服拍照超美。營業時間: 9:00-20:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">15:00</div>
+                        <div class="station-name">
+                            隅田公園
+                            <a href="https://www.google.com/maps/place/Sumida+Park" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">河岸景色優美,可以看到晴空塔,穿和服拍照很適合</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">👘</span>
+                        <span class="walk-text">17:00前 返回愛和服店歸還和服、換回便服(步行6分鐘)</span>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 15分鐘到晴空塔(或搭東武晴空塔線1站2分鐘)</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">17:30</div>
+                        <div class="station-name">
+                            東京晴空塔城
+                            <a href="https://www.google.com/maps/place/Tokyo+Skytree" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-1-2 Oshiage, Sumida City</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">在晴空塔城內(5-6F)</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">18:00</div>
+                        <div class="station-name">
+                            墨田水族館
+                            <a href="https://www.google.com/maps/place/Sumida+Aquarium" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">東京晴空塔城 5F-6F</div>
+                        <div class="station-note">營業時間: 10:00-20:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">搭電梯上展望台</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">19:00</div>
+                        <div class="station-name">
+                            東京晴空塔展望台
+                            <a href="https://www.google.com/maps/place/Tokyo+Skytree" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">建議傍晚6-7點上去看夜景!營業時間: 10:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">下來逛3F商場</span>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">20:00</div>
+                        <div class="station-name">
+                            PUNYUS 晴空塔店
+                            <a href="https://www.google.com/maps/search/PUNYUS+東京スカイツリー" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">東京晴空塔城 3F</div>
+                        <div class="station-note">大碼可愛女裝品牌!渡邊直美設計,尺碼到5L。營業時間: 10:00-21:00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    <strong>穿和服時段:</strong> 9:30換裝完成 → 17:00歸還,有7.5小時拍照時間!<br><br>
+                    
+                    1月溫度約5-10度,和服店會提供保暖內搭,記得穿發熱衣+保暖襪。淺草有很多景點可以慢慢逛、拍美照。還和服後輕鬆去晴空塔看夜景。PUNYUS是渡邊直美的大碼女裝品牌,尺碼很齊全!
+                </div>
+            </div>
+            
+            <div class="suggestions-box">
+                <div class="suggestions-title">💭 可加入的景點</div>
+                <div class="suggestions-content">
+                    <div class="suggestion-item"><strong>淺草花屋敷遊樂園:</strong> 日本最古老遊樂園,復古風情好拍,步行5分鐘</div>
+                    <div class="suggestion-item"><strong>晴空塔城Solamachi:</strong> 購物商場,很多店可逛,在晴空塔同棟</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 4</div>
+                <div class="day-subtitle">明治神宮 · 原宿 · 表參道 · 澀谷</div>
+                <div class="day-date">1月23日(四)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-medium" style="width: 55%;">⭐⭐⭐ (55%) 中等</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 適中,景點集中好走,昨天穿和服累了今天可以睡飽再出門😴</span>
+            </div>
+            
+            <div class="time-box">
+                <div class="time-title">⏰ 今日時間規劃</div>
+                <div class="time-content">
+                    <strong>建議起床: 8:00-8:30</strong> (今天可以睡飽!)<br>
+                    8:00-9:00 化妝整理 (1hr)<br>
+                    9:10 出門<br>
+                    💡 昨天穿和服累了,今天輕鬆逛街日!
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">10:00</div>
+                        <div class="station-name">
+                            明治神宮
+                            <a href="https://www.google.com/maps/place/Meiji+Shrine" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-1 Yoyogikamizonochō, Shibuya</div>
+                        <div class="station-note">從高田馬場搭JR山手線到原宿(12分,¥170)<br>1月開放時間: 6:40-16:20</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 10分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:00</div>
+                        <div class="station-name">
+                            竹下通
+                            <a href="https://www.google.com/maps/place/Takeshita+Street" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">原宿最熱鬧的可愛小店街!</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">竹下通內(步行1分鐘)</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:30</div>
+                        <div class="station-name">
+                            WEGO 原宿竹下通店
+                            <a href="https://www.google.com/maps/search/WEGO+原宿竹下通" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">平價服飾連鎖店,有大尺碼選擇!營業時間: 11:00-20:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 8分鐘到表參道</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">12:30</div>
+                        <div class="station-name">
+                            表參道之丘
+                            <a href="https://www.google.com/maps/place/Omotesando+Hills" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">4-chōme-12-10 Jingūmae, Shibuya</div>
+                        <div class="station-note">時尚購物天堂!建議預留1-2小時。營業時間: 11:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">14:30</div>
+                        <div class="station-name">
+                            @cosme TOKYO
+                            <a href="https://www.google.com/maps/place/@cosme+TOKYO" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-14-27 Jingūmae, Shibuya</div>
+                        <div class="station-note">日本最大美妝店!可以試用各種產品。營業時間: 11:00-20:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 3分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">15:30</div>
+                        <div class="station-name">
+                            松本清 原宿店
+                            <a href="https://www.google.com/maps/search/マツモトキヨシ+原宿" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">💳 免稅藥妝店!竹下通附近就有。營業時間: 10:00-22:00</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>表參道 → 澀谷
+                        </div>
+                        <div class="transport-details">
+                            步行18分鐘 或 搭銀座線1站2分鐘
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">17:30</div>
+                        <div class="station-name">
+                            澀谷 SKY 展望台
+                            <a href="https://www.google.com/maps/place/Shibuya+Sky" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">澀谷Scramble Square 14F·45F·46F·屋上</div>
+                        <div class="station-note">建議傍晚5-6點來看夜景!營業時間: 10:00-22:30</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    昨天穿和服累了,今天可以睡飽再出門!竹下通有很多平價可愛店鋪,WEGO有大尺碼選擇。@cosme可以慢慢試用產品。澀谷SKY傍晚去最美,建議先上網買票。1月天黑得早(約17:00),記得安排好時間。
+                </div>
+            </div>
+            
+            <div class="suggestions-box">
+                <div class="suggestions-title">💭 可加入的景點</div>
+                <div class="suggestions-content">
+                    <div class="suggestion-item"><strong>澀谷109:</strong> 年輕女裝百貨,有大尺碼專區,在澀谷站旁步行3分鐘</div>
+                    <div class="suggestion-item"><strong>澀谷忠犬八公像:</strong> 在澀谷站出口,拍照打卡1分鐘</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 5</div>
+                <div class="day-subtitle">築地 · 銀座 · 東京鐵塔</div>
+                <div class="day-date">1月24日(五)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-medium" style="width: 60%;">⭐⭐⭐ (60%) 中等</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 適中,築地要早起🌅</span>
+            </div>
+            
+            <div class="time-box" style="background: #fff4e6;">
+                <div class="time-title">⏰ 今日時間規劃 (要早起!)</div>
+                <div class="time-content">
+                    <strong>建議起床: 6:30</strong> 🌅 (這天最早!)<br>
+                    6:30-7:30 化妝整理 (1hr)<br>
+                    7:40 出門<br>
+                    💡 <strong>築地很多店11:00-13:00就關門,一定要早去!</strong><br>
+                    ⚠️ 前一晚記得早點睡!
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">9:00</div>
+                        <div class="station-name">
+                            築地市場(場外市場)
+                            <a href="https://www.google.com/maps/place/Tsukiji+Outer+Market" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">4-chōme-16 Tsukiji, Chuo City</div>
+                        <div class="station-note">從高田馬場搭東西線→日本橋→轉日比谷線→築地(約30分)<br>營業時間: 各店不同,約8:00-14:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 12分鐘到銀座</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:00</div>
+                        <div class="station-name">
+                            無印良品 銀座店
+                            <a href="https://www.google.com/maps/place/MUJI+Ginza" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">⭐全球旗艦店!地下1樓~10樓,商品最齊全。營業時間: 10:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 6分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">12:30</div>
+                        <div class="station-name">
+                            FUEGUIA 1833 銀座店
+                            <a href="https://www.google.com/maps/place/GINZA+SIX" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">GINZA SIX 3F</div>
+                        <div class="station-note">阿根廷小眾香水品牌。營業時間: 10:30-20:30</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 4分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">13:30</div>
+                        <div class="station-name">
+                            CANMAKE 銀座旗艦店
+                            <a href="https://www.google.com/maps/search/CANMAKE+銀座" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">日本超人氣平價彩妝!專櫃可試妝。營業時間: 11:00-20:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 3分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">14:00</div>
+                        <div class="station-name">
+                            松本清 銀座店
+                            <a href="https://www.google.com/maps/search/マツモトキヨシ+銀座" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">💳 免稅藥妝店!銀座有多家分店。營業時間: 10:00-22:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>銀座 → 東京鐵塔
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">銀座站</span> 搭日比谷線 → <span class="route-info">神谷町站</span> | 8分鐘 <span class="price">¥180</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">15:00</div>
+                        <div class="station-name">
+                            東京鐵塔
+                            <a href="https://www.google.com/maps/place/Tokyo+Tower" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">4-chōme-2-8 Shibakōen, Minato City</div>
+                        <div class="station-note">從神谷町站步行7分鐘<br>建議傍晚5-6點上去看夜景!營業時間: 9:00-22:30</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    築地一定要早去!無印良品銀座旗艦店超大很好逛,是全球最大的無印良品,建議預留1-1.5小時。CANMAKE是日本超人氣平價彩妝,銀座店可以試妝。大創銀座店也很好逛。東京鐵塔傍晚去最美,可以看日落+夜景。善用車站置物櫃寄放戰利品!
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 6</div>
+                <div class="day-subtitle">吉卜力 · 吉祥寺 · 下北澤 · 自由之丘</div>
+                <div class="day-date">1月25日(六)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-medium" style="width: 55%;">⭐⭐⭐ (55%) 中等</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 適中,主要是逛街放鬆。這是彈性日,可依體力決定去幾個點!</span>
+            </div>
+            
+            <div class="time-box" style="background: #f0f8ff;">
+                <div class="time-title">⏰ 今日時間規劃</div>
+                <div class="time-content">
+                    <strong>建議起床: 7:30-8:00</strong><br>
+                    7:30-8:30 化妝整理 (1hr)<br>
+                    8:40 出門<br>
+                    💡 今天是彈性日,如果前幾天很累可以晚點起床!<br>
+                    ⚠️ <strong>記得確認吉卜力預約時間!</strong>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">9:00-10:00</div>
+                        <div class="station-name">
+                            三鷹之森吉卜力美術館
+                            <a href="https://www.google.com/maps/place/Ghibli+Museum" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">1-chōme-1-83 Shimorenjaku, Mitaka</div>
+                        <div class="station-note">從高田馬場搭JR中央線到三鷹(15分,¥220)<br>⚠️ 需提前1-3個月預約!營業時間: 10:00-18:00(週二休館)</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>三鷹 → 吉祥寺
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">三鷹站</span> 搭JR中央線 → <span class="route-info">吉祥寺站</span> | 1站 3分鐘 <span class="price">¥140</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 8分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">12:00</div>
+                        <div class="station-name">
+                            吉祥寺 Petit村
+                            <a href="https://www.google.com/maps/search/吉祥寺+プティット村" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">2-chōme-33-2 Kichijōji Honchō, Musashino</div>
+                        <div class="station-note">可愛小店聚集地!很好逛</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>吉祥寺 → 下北澤
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">吉祥寺站</span> 搭京王井之頭線 → <span class="route-info">下北澤站</span> | 12分鐘 <span class="price">¥170</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">14:00</div>
+                        <div class="station-name">
+                            Village Vanguard 下北澤店
+                            <a href="https://www.google.com/maps/place/Village+Vanguard+下北沢店" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">2-chōme-10-15 Kitazawa, Setagaya City 1F</div>
+                        <div class="station-note">超有趣的雜貨店!可以逛很久。營業時間: 11:00-21:00</div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">步行 3分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">15:00</div>
+                        <div class="station-name">
+                            下北澤商店街
+                            <a href="https://www.google.com/maps/place/Shimokitazawa" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">文青天堂!古著店、咖啡廳、小店超多</div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>下北澤 → 自由之丘
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">下北澤站</span> 搭京王井之頭線 → <span class="route-info">澀谷站</span>(7分)<br>
+                            → 轉東急東橫線 → <span class="route-info">自由之丘站</span>(10分) <span class="price">¥260</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">自由之丘站出來即是商店街</span>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">17:00</div>
+                        <div class="station-name">
+                            自由之丘
+                            <a href="https://www.google.com/maps/place/Jiyugaoka" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">自由が丘, 目黑區</div>
+                        <div class="station-note">歐風小鎮氛圍,甜點店、雜貨店超多!</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    吉卜力美術館一定要提前預約!下北澤和自由之丘都超好逛,建議各預留1.5-2小時。今天是彈性日,如果前幾天很累:<br>
+                    • <strong>方案A:</strong> 只去吉卜力+吉祥寺<br>
+                    • <strong>方案B:</strong> 整天在附近休息補買伴手禮<br>
+                    • <strong>方案C:</strong> 全部跑完(體力好的話)
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">Day 7</div>
+                <div class="day-subtitle">退房 · 前往機場</div>
+                <div class="day-date">1月26日(日)</div>
+            </div>
+            
+            <div class="energy-bar-container">
+                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-bar">
+                    <div class="energy-fill energy-low" style="width: 25%;">⭐ (25%) 輕鬆</div>
+                </div>
+            </div>
+            
+            <div class="day-status">
+                <span class="status-icon">✅</span>
+                <span class="status-text">行程狀態: 輕鬆,只有退房和前往機場</span>
+            </div>
+            
+            <div class="time-box">
+                <div class="time-title">⏰ 今日時間規劃</div>
+                <div class="time-content">
+                    <strong>建議起床: 7:00</strong><br>
+                    7:00-7:30 簡單梳洗、最後整理行李<br>
+                    7:30-8:00 Check-out<br>
+                    8:30 出發往機場<br>
+                    💡 <strong>前一晚(Day 6)記得整理好行李!</strong>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="station first">
+                    <div class="station-content">
+                        <div class="station-time">7:30-8:00</div>
+                        <div class="station-name">
+                            FL レジデンス高田馬場 Check-out
+                            <a href="https://www.google.com/maps/search/FL+レジデンス高田馬場" target="_blank" class="map-icon">📍</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚄</span>高田馬場 → 成田機場
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">高田馬場站</span> 搭JR山手線 → <span class="route-info">日暮里站</span>(15分)<br>
+                            → 搭Skyliner → <span class="route-info">成田機場站</span>(36分) <span class="price">¥2,630</span><br>
+                            總時程約1小時
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="station last">
+                    <div class="station-content">
+                        <div class="station-time">9:30</div>
+                        <div class="station-name">
+                            成田國際機場
+                            <a href="https://www.google.com/maps/place/Narita+International+Airport" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-note">11:25起飛✈️ 機場有免稅店可最後採購!</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-box">
+                <div class="tips-title">💡 今日建議</div>
+                <div class="tips-content">
+                    前一晚記得整理好行李,早上才不會手忙腳亂。機場有免稅店可以做最後採購!從高田馬場到成田機場約1小時,8:30前出發很充裕。
+                </div>
+            </div>
+        </div>
+
+        <!-- 交通費用 -->
+        <div class="info-section">
+            <div class="info-title">💰 交通費用總計</div>
+            
+            <div class="info-item">
+                <h4>使用Suica/PASMO卡 - 七天總費用</h4>
+                <ul>
+                    <li>建議儲值:<span class="price">¥10,000</span>(含來回機場)</li>
+                    <li>Day 1: 成田→高田馬場 <span class="price">¥2,630</span></li>
+                    <li>Day 2-6: 市區交通 約<span class="price">¥2,400</span></li>
+                    <li>Day 7: 高田馬場→成田 <span class="price">¥2,630</span></li>
+                    <li><strong>總計約:</strong> <span
