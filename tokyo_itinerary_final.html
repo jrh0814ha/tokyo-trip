@@ -41,8 +41,159 @@
         .subtitle {
             text-align: center;
             color: #b5a5a5;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-size: 1.1em;
+        }
+        
+        /* Quick Navigation Badges */
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .day-badge {
+            background: linear-gradient(135deg, #c9b5a8 0%, #b5a5a5 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        
+        .day-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        
+        .day-badge.arrival {
+            background: linear-gradient(135deg, #90c695 0%, #7ab57f 100%);
+        }
+        
+        .day-badge.kimono {
+            background: linear-gradient(135deg, #e8a5b5 0%, #d89aaa 100%);
+        }
+        
+        .day-badge.departure {
+            background: linear-gradient(135deg, #8ab5d4 0%, #7aa5c4 100%);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .date-range {
+                font-size: 1em;
+            }
+            
+            .subtitle {
+                font-size: 0.95em;
+            }
+            
+            .quick-nav {
+                gap: 8px;
+                margin: 20px 0;
+            }
+            
+            .day-badge {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+            
+            .day-section {
+                padding: 25px 20px;
+                margin-bottom: 25px;
+            }
+            
+            .day-title {
+                padding: 12px 30px;
+                font-size: 1.5em;
+            }
+            
+            .day-subtitle {
+                font-size: 1em;
+            }
+            
+            .timeline {
+                padding-left: 45px;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .station::before {
+                left: -38px;
+            }
+            
+            .station.first::before,
+            .station.last::before {
+                left: -40px;
+            }
+            
+            .station-content {
+                padding: 15px 18px;
+            }
+            
+            .station-name {
+                font-size: 1.2em;
+            }
+            
+            .station-time {
+                font-size: 1em;
+            }
+            
+            .transport-content,
+            .walk-content {
+                padding: 12px 18px;
+            }
+            
+            .tips-box,
+            .suggestions-box,
+            .time-box {
+                padding: 15px 18px;
+            }
+            
+            .info-section {
+                padding: 25px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .day-badge {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+            
+            .day-section {
+                padding: 20px 15px;
+            }
+            
+            .day-title {
+                padding: 10px 25px;
+                font-size: 1.3em;
+            }
+            
+            .station-name {
+                font-size: 1.1em;
+            }
         }
         
         .day-section {
@@ -463,8 +614,19 @@
         <div class="date-range">2025年1月20日(一) - 1月26日(日)</div>
         <div class="subtitle">清晰路線 · 順暢銜接 · 輕鬆出遊</div>
         
+        <!-- Quick Navigation -->
+        <div class="quick-nav">
+            <a href="#day1" class="day-badge arrival">Day 1 抵達</a>
+            <a href="#day2" class="day-badge">Day 2 池袋</a>
+            <a href="#day3" class="day-badge kimono">Day 3 和服👘</a>
+            <a href="#day4" class="day-badge">Day 4 原宿</a>
+            <a href="#day5" class="day-badge">Day 5 築地</a>
+            <a href="#day6" class="day-badge">Day 6 吉卜力</a>
+            <a href="#day7" class="day-badge departure">Day 7 機場</a>
+        </div>
+        
         <!-- Day 1 -->
-        <div class="day-section">
+        <div class="day-section" id="day1">
             <div class="day-header">
                 <div class="day-title">Day 1</div>
                 <div class="day-subtitle">抵達日 · 前往住宿</div>
@@ -529,7 +691,7 @@
         </div>
 
         <!-- Day 2 -->
-        <div class="day-section">
+        <div class="day-section" id="day2">
             <div class="day-header">
                 <div class="day-title">Day 2</div>
                 <div class="day-subtitle">池袋 · 秋葉原 · 上野</div>
@@ -609,17 +771,50 @@
                 <div class="transport">
                     <div class="transport-content">
                         <div class="transport-title">
-                            <span class="transport-icon">🚇</span>池袋 → 秋葉原
+                            <span class="transport-icon">🚇</span>池袋 → 駒込
                         </div>
                         <div class="transport-details">
-                            <span class="route-info">池袋站</span> 搭JR山手線 → <span class="route-info">秋葉原站</span> | 20分鐘 <span class="price">¥170</span>
+                            <span class="route-info">池袋站</span> 搭JR山手線 → <span class="route-info">駒込站</span> | 2站 4分鐘 <span class="price">¥150</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">駒込站北口步行 5分鐘</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">11:30</div>
+                        <div class="station-name">
+                            🐱 駒込妙義神社
+                            <a href="https://www.google.com/maps/place/妙義神社+駒込" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">東京都豊島区駒込3-16-16</div>
+                        <div class="station-note">
+                            貓奴聖地!黑貓御守超可愛(黎明守、靜謐守)。豐島區最古老神社(1300年歷史)。<br>
+                            參拜時間: 24小時 / 社務所 9:00-16:00(週三公休)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>駒込 → 秋葉原
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">駒込站</span> 搭JR山手線 → <span class="route-info">秋葉原站</span> | 11分鐘 <span class="price">¥170</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">13:00</div>
+                        <div class="station-time">12:30</div>
                         <div class="station-name">
                             秋葉原電器街
                             <a href="https://www.google.com/maps/place/Akihabara+Electric+Town" target="_blank" class="map-icon">📍</a>
@@ -637,7 +832,7 @@
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">14:00</div>
+                        <div class="station-time">13:30</div>
                         <div class="station-name">
                             大創 DAISO 秋葉原店
                             <a href="https://www.google.com/maps/search/ダイソー+秋葉原" target="_blank" class="map-icon">📍</a>
@@ -659,7 +854,7 @@
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">15:30</div>
+                        <div class="station-time">15:00</div>
                         <div class="station-name">
                             阿美橫丁
                             <a href="https://www.google.com/maps/place/Ameya-Yokocho" target="_blank" class="map-icon">📍</a>
@@ -678,9 +873,9 @@
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">15:45</div>
+                        <div class="station-time">15:15</div>
                         <div class="station-name">
-                            松本清 上野阿美橫丁店
+                            💳 松本清 上野阿美橫丁店
                             <a href="https://www.google.com/maps/search/マツモトキヨシ+上野アメ横" target="_blank" class="map-icon">📍</a>
                         </div>
                         <div class="station-note">💳 免稅藥妝店!滿¥5,000即可退稅。營業時間: 10:00-22:00</div>
@@ -696,7 +891,7 @@
                 
                 <div class="station last">
                     <div class="station-content">
-                        <div class="station-time">16:30</div>
+                        <div class="station-time">16:00</div>
                         <div class="station-name">
                             唐吉訶德 上野阿美橫丁店
                             <a href="https://www.google.com/maps/search/ドン・キホーテ+上野アメ横店" target="_blank" class="map-icon">📍</a>
@@ -715,7 +910,7 @@
         </div>
 
         <!-- Day 3 -->
-        <div class="day-section">
+        <div class="day-section" id="day3">
             <div class="day-header">
                 <div class="day-title">Day 3</div>
                 <div class="day-subtitle">淺草 · 晴空塔(和服日)</div>
@@ -758,13 +953,14 @@
                     <div class="station-content">
                         <div class="station-time">9:00-9:30</div>
                         <div class="station-name">
-                            愛和服 雷門店 (換裝)
-                            <a href="https://www.google.com/maps/place/愛和服+雷門店" target="_blank" class="map-icon">📍</a>
+                            愛和服 淺草本店 (換裝)
+                            <a href="https://www.google.com/maps/place/愛和服+淺草本店" target="_blank" class="map-icon">📍</a>
                         </div>
-                        <div class="station-address">東京都台東区雷門2-17-9, Relink KAMINARIMON 4F</div>
+                        <div class="station-address">東京都台東区花川戸1-11-1</div>
                         <div class="station-note">
                             從高田馬場搭東西線→日本橋站→轉銀座線→淺草站(約30分)<br>
-                            淺草站1號出口步行3分鐘<br>
+                            淺草站1號出口步行1分鐘<br>
+                            電話: 03-6231-7232<br>
                             換裝時間約30-40分鐘
                         </div>
                     </div>
@@ -962,7 +1158,7 @@
         </div>
 
         <!-- Day 4 -->
-        <div class="day-section">
+        <div class="day-section" id="day4">
             <div class="day-header">
                 <div class="day-title">Day 4</div>
                 <div class="day-subtitle">明治神宮 · 原宿 · 表參道 · 澀谷</div>
@@ -1119,7 +1315,7 @@
         </div>
 
         <!-- Day 5 -->
-        <div class="day-section">
+        <div class="day-section" id="day5">
             <div class="day-header">
                 <div class="day-title">Day 5</div>
                 <div class="day-subtitle">築地 · 銀座 · 東京鐵塔</div>
@@ -1257,7 +1453,7 @@
         </div>
 
         <!-- Day 6 -->
-        <div class="day-section">
+        <div class="day-section" id="day6">
             <div class="day-header">
                 <div class="day-title">Day 6</div>
                 <div class="day-subtitle">吉卜力 · 吉祥寺 · 下北澤 · 自由之丘</div>
@@ -1422,7 +1618,7 @@
         </div>
 
         <!-- Day 7 -->
-        <div class="day-section">
+        <div class="day-section" id="day7">
             <div class="day-header">
                 <div class="day-title">Day 7</div>
                 <div class="day-subtitle">退房 · 前往機場</div>
