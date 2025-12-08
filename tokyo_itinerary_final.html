@@ -64,8 +64,10 @@
             font-weight: bold;
             font-size: 0.95em;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
             white-space: nowrap;
+            cursor: pointer;
+            border: none;
         }
         
         .day-badge:hover {
@@ -73,16 +75,82 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
         
+        .day-badge.active {
+            background: linear-gradient(135deg, #8b7355 0%, #6d5d4d 100%);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+        
         .day-badge.arrival {
             background: linear-gradient(135deg, #90c695 0%, #7ab57f 100%);
+        }
+        
+        .day-badge.arrival.active {
+            background: linear-gradient(135deg, #5a9d60 0%, #4a8d50 100%);
         }
         
         .day-badge.kimono {
             background: linear-gradient(135deg, #e8a5b5 0%, #d89aaa 100%);
         }
         
+        .day-badge.kimono.active {
+            background: linear-gradient(135deg, #c8758a 0%, #b8657a 100%);
+        }
+        
         .day-badge.departure {
             background: linear-gradient(135deg, #8ab5d4 0%, #7aa5c4 100%);
+        }
+        
+        .day-badge.departure.active {
+            background: linear-gradient(135deg, #5a85a4 0%, #4a7594 100%);
+        }
+        
+        /* Tab Content */
+        .day-section {
+            display: none;
+        }
+        
+        .day-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Steps Counter */
+        .steps-counter {
+            background: linear-gradient(135deg, #f8f5f2 0%, #f0ebe6 100%);
+            border-left: 4px solid #c9b5a8;
+            padding: 12px 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .steps-icon {
+            font-size: 1.3em;
+        }
+        
+        .steps-text {
+            font-size: 0.95em;
+            color: #5d4e37;
+        }
+        
+        .steps-number {
+            font-weight: bold;
+            color: #8b7355;
+            font-size: 1.05em;
         }
         
         /* Responsive Design */
@@ -125,6 +193,20 @@
             
             .day-subtitle {
                 font-size: 1em;
+            }
+            
+            .energy-info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .energy-label {
+                font-size: 1em;
+            }
+            
+            .steps-info {
+                font-size: 0.9em;
             }
             
             .timeline {
@@ -242,11 +324,33 @@
             border-left: 4px solid #c9b5a8;
         }
         
+        .energy-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
         .energy-label {
             color: #7a6a6a;
             font-weight: bold;
-            margin-bottom: 10px;
             font-size: 1.1em;
+        }
+        
+        .steps-info {
+            color: #5d4e37;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .steps-number {
+            font-weight: bold;
+            color: #8b7355;
+            font-size: 1.05em;
         }
         
         .energy-bar {
@@ -616,17 +720,17 @@
         
         <!-- Quick Navigation -->
         <div class="quick-nav">
-            <a href="#day1" class="day-badge arrival">Day 1 抵達</a>
-            <a href="#day2" class="day-badge">Day 2 池袋</a>
-            <a href="#day3" class="day-badge kimono">Day 3 和服👘</a>
-            <a href="#day4" class="day-badge">Day 4 原宿</a>
-            <a href="#day5" class="day-badge">Day 5 築地</a>
-            <a href="#day6" class="day-badge">Day 6 吉卜力</a>
-            <a href="#day7" class="day-badge departure">Day 7 機場</a>
+            <button class="day-badge arrival active" onclick="showDay(1)">Day 1 抵達</button>
+            <button class="day-badge" onclick="showDay(2)">Day 2 池袋</button>
+            <button class="day-badge kimono" onclick="showDay(3)">Day 3 和服👘</button>
+            <button class="day-badge" onclick="showDay(4)">Day 4 原宿</button>
+            <button class="day-badge" onclick="showDay(5)">Day 5 築地</button>
+            <button class="day-badge" onclick="showDay(6)">Day 6 吉卜力</button>
+            <button class="day-badge departure" onclick="showDay(7)">Day 7 機場</button>
         </div>
         
         <!-- Day 1 -->
-        <div class="day-section" id="day1">
+        <div class="day-section active" id="day1">
             <div class="day-header">
                 <div class="day-title">Day 1</div>
                 <div class="day-subtitle">抵達日 · 前往住宿</div>
@@ -634,7 +738,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">2,000-3,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-low" style="width: 20%;">⭐ (20%) 輕鬆</div>
                 </div>
@@ -699,7 +808,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">18,000-20,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-medium" style="width: 60%;">⭐⭐⭐ (60%) 中等</div>
                 </div>
@@ -709,7 +823,6 @@
                 <span class="status-icon">✅</span>
                 <span class="status-text">行程狀態: 適中,主要是逛街購物,可依體力調整</span>
             </div>
-            
             <div class="time-box">
                 <div class="time-title">⏰ 今日時間規劃</div>
                 <div class="time-content">
@@ -918,7 +1031,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">9,000-11,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-high" style="width: 65%;">⭐⭐⭐⭐ (65%) 中高</div>
                 </div>
@@ -928,7 +1046,6 @@
                 <span class="status-icon">⚠️</span>
                 <span class="status-text">行程狀態: 偏滿,穿和服會比較累,但景點集中。1月溫度約5-10度,穿和服記得加保暖內搭</span>
             </div>
-            
             <div class="kimono-notice">
                 <div class="icon">👘</div>
                 <div class="text">
@@ -954,7 +1071,7 @@
                         <div class="station-time">9:00-9:30</div>
                         <div class="station-name">
                             愛和服 淺草本店 (換裝)
-                            <a href="https://www.google.com/maps/place/愛和服+淺草本店" target="_blank" class="map-icon">📍</a>
+                            <a href="https://www.google.com/maps/search/東京都台東区花川戸1-11-1" target="_blank" class="map-icon">📍</a>
                         </div>
                         <div class="station-address">東京都台東区花川戸1-11-1</div>
                         <div class="station-note">
@@ -1166,7 +1283,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">15,000-17,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-medium" style="width: 55%;">⭐⭐⭐ (55%) 中等</div>
                 </div>
@@ -1176,7 +1298,6 @@
                 <span class="status-icon">✅</span>
                 <span class="status-text">行程狀態: 適中,景點集中好走,昨天穿和服累了今天可以睡飽再出門😴</span>
             </div>
-            
             <div class="time-box">
                 <div class="time-title">⏰ 今日時間規劃</div>
                 <div class="time-content">
@@ -1323,7 +1444,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">14,000-16,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-medium" style="width: 60%;">⭐⭐⭐ (60%) 中等</div>
                 </div>
@@ -1333,7 +1459,6 @@
                 <span class="status-icon">✅</span>
                 <span class="status-text">行程狀態: 適中,築地要早起🌅</span>
             </div>
-            
             <div class="time-box" style="background: #fff4e6;">
                 <div class="time-title">⏰ 今日時間規劃 (要早起!)</div>
                 <div class="time-content">
@@ -1358,16 +1483,61 @@
                     </div>
                 </div>
                 
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>築地 → 人形町
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">築地站</span> 搭日比谷線 → <span class="route-info">人形町站</span> | 3站 5分鐘 <span class="price">¥180</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="walk">
                     <div class="walk-content">
                         <span class="walk-icon">🚶</span>
-                        <span class="walk-text">步行 12分鐘到銀座</span>
+                        <span class="walk-text">人形町站A2出口步行 5分鐘</span>
                     </div>
                 </div>
                 
                 <div class="station">
                     <div class="station-content">
                         <div class="station-time">11:00</div>
+                        <div class="station-name">
+                            🪙 小網神社 (洗錢神社)
+                            <a href="https://www.google.com/maps/search/東京都中央区日本橋小網町16-23" target="_blank" class="map-icon">📍</a>
+                        </div>
+                        <div class="station-address">東京都中央区日本橋小網町16-23</div>
+                        <div class="station-note">
+                            超靈驗的求財神社!在「洗錢之井」清洗錢幣後放進錢包,據說能招來財運!<br>
+                            強運厄除·財運提升·東京最強金運神社之一<br>
+                            參拜時間: 24小時 / 社務所 9:00-17:00
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transport">
+                    <div class="transport-content">
+                        <div class="transport-title">
+                            <span class="transport-icon">🚇</span>人形町 → 銀座
+                        </div>
+                        <div class="transport-details">
+                            <span class="route-info">人形町站</span> 搭日比谷線 → <span class="route-info">銀座站</span> | 4站 7分鐘 <span class="price">¥180</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="walk">
+                    <div class="walk-content">
+                        <span class="walk-icon">🚶</span>
+                        <span class="walk-text">銀座站出來即到</span>
+                    </div>
+                </div>
+                
+                <div class="station">
+                    <div class="station-content">
+                        <div class="station-time">12:00</div>
                         <div class="station-name">
                             無印良品 銀座店
                             <a href="https://www.google.com/maps/place/MUJI+Ginza" target="_blank" class="map-icon">📍</a>
@@ -1385,7 +1555,7 @@
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">12:30</div>
+                        <div class="station-time">13:00</div>
                         <div class="station-name">
                             FUEGUIA 1833 銀座店
                             <a href="https://www.google.com/maps/place/GINZA+SIX" target="_blank" class="map-icon">📍</a>
@@ -1404,7 +1574,7 @@
                 
                 <div class="station">
                     <div class="station-content">
-                        <div class="station-time">13:30</div>
+                        <div class="station-time">14:00</div>
                         <div class="station-name">
                             CANMAKE 銀座旗艦店
                             <a href="https://www.google.com/maps/search/CANMAKE+銀座" target="_blank" class="map-icon">📍</a>
@@ -1433,7 +1603,7 @@
                 
                 <div class="station last">
                     <div class="station-content">
-                        <div class="station-time">14:30</div>
+                        <div class="station-time">15:00</div>
                         <div class="station-name">
                             東京鐵塔
                             <a href="https://www.google.com/maps/place/Tokyo+Tower" target="_blank" class="map-icon">📍</a>
@@ -1447,7 +1617,15 @@
             <div class="tips-box">
                 <div class="tips-title">💡 今日建議</div>
                 <div class="tips-content">
-                    築地一定要早去!無印良品銀座旗艦店超大很好逛,是全球最大的無印良品,建議預留1-1.5小時。CANMAKE是日本超人氣平價彩妝,銀座店可以試妝。大創銀座店也很好逛。東京鐵塔傍晚去最美,可以看日落+夜景。善用車站置物櫃寄放戰利品!
+                    <strong>🪙 求財日!</strong> 築地吃美食→小網神社洗錢祈求財運→銀座血拼,主題一致😂<br><br>
+                    
+                    <strong>小網神社洗錢步驟:</strong><br>
+                    1. 先在本殿參拜(二拜二拍手一拜)<br>
+                    2. 到「洗錢之井」旁拿竹籃<br>
+                    3. 把硬幣或紙鈔放入竹籃,浸入水中輕輕晃動<br>
+                    4. 擦乾後放回錢包當錢母,據說能招來財運!<br><br>
+                    
+                    無印良品銀座是全球最大旗艦店,超好逛!建議預留1-1.5小時。東京鐵塔傍晚去最美,可以看日落+夜景。
                 </div>
             </div>
         </div>
@@ -1461,7 +1639,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">16,000-18,000步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-medium" style="width: 55%;">⭐⭐⭐ (55%) 中等</div>
                 </div>
@@ -1471,7 +1654,6 @@
                 <span class="status-icon">✅</span>
                 <span class="status-text">行程狀態: 適中,主要是逛街放鬆。這是彈性日,可依體力決定去幾個點!</span>
             </div>
-            
             <div class="time-box" style="background: #f0f8ff;">
                 <div class="time-title">⏰ 今日時間規劃</div>
                 <div class="time-content">
@@ -1626,7 +1808,12 @@
             </div>
             
             <div class="energy-bar-container">
-                <div class="energy-label">🎮 體力消耗:</div>
+                <div class="energy-info-row">
+                    <div class="energy-label">🎮 體力消耗</div>
+                    <div class="steps-info">
+                        👟 預計步數: <span class="steps-number">2,500-3,500步</span>
+                    </div>
+                </div>
                 <div class="energy-bar">
                     <div class="energy-fill energy-low" style="width: 25%;">⭐ (25%) 輕鬆</div>
                 </div>
@@ -1636,7 +1823,6 @@
                 <span class="status-icon">✅</span>
                 <span class="status-text">行程狀態: 輕鬆,只有退房和前往機場</span>
             </div>
-            
             <div class="time-box">
                 <div class="time-title">⏰ 今日時間規劃</div>
                 <div class="time-content">
@@ -1703,4 +1889,46 @@
                     <li>Day 1: 成田→高田馬場 <span class="price">¥2,630</span></li>
                     <li>Day 2-6: 市區交通 約<span class="price">¥2,400</span></li>
                     <li>Day 7: 高田馬場→成田 <span class="price">¥2,630</span></li>
-                    <li><strong>總計約:</strong> <span
+                    <li><strong>總計約:</strong> <span class="price">¥7,660</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showDay(dayNumber) {
+            // 隱藏所有day-section
+            const sections = document.querySelectorAll('.day-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 移除所有badge的active class
+            const badges = document.querySelectorAll('.day-badge');
+            badges.forEach(badge => {
+                badge.classList.remove('active');
+            });
+            
+            // 顯示選中的day
+            const selectedDay = document.getElementById('day' + dayNumber);
+            if (selectedDay) {
+                selectedDay.classList.add('active');
+            }
+            
+            // 加上active class到選中的badge
+            const selectedBadge = document.querySelectorAll('.day-badge')[dayNumber - 1];
+            if (selectedBadge) {
+                selectedBadge.classList.add('active');
+            }
+            
+            // 滾動到頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 頁面載入時顯示Day 1
+        document.addEventListener('DOMContentLoaded', function() {
+            showDay(1);
+        });
+    </script>
+</body>
+</html>
