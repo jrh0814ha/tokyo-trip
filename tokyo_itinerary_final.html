@@ -315,13 +315,13 @@
 
     <div class="nav-container">
         <div class="nav-scroller">
-            <button class="badge active" onclick="showDay('day1')">Day 1 抵達</button>
-            <button class="badge" onclick="showDay('day2')">Day 2 池袋/秋葉原</button>
-            <button class="badge" onclick="showDay('day3')">Day 3 淺草/晴空塔</button>
-            <button class="badge" onclick="showDay('day4')">Day 4 原宿/澀谷</button>
-            <button class="badge" onclick="showDay('day5')">Day 5 築地/銀座</button>
-            <button class="badge" onclick="showDay('day6')">Day 6 吉祥寺/中目黑</button>
-            <button class="badge" onclick="showDay('day7')">Day 7 返台</button>
+            <button class="badge active" onclick="showDay('day1')">[Day 1] 抵達 #20</button>
+            <button class="badge" onclick="showDay('day2')">[Day 2] 池袋/秋葉原 #21</button>
+            <button class="badge" onclick="showDay('day3')">[Day 3] 淺草/晴空塔 #22</button>
+            <button class="badge" onclick="showDay('day4')">[Day 4] 原宿/澀谷 #23</button>
+            <button class="badge" onclick="showDay('day5')">[Day 5] 築地/銀座 #24</button>
+            <button class="badge" onclick="showDay('day6')">[Day 6] 吉祥寺/中目黑 #25</button>
+            <button class="badge" onclick="showDay('day7')">[Day 7] 返台 #26</button>
             <button class="badge" onclick="showDay('info')">💰 預算與資訊</button>
         </div>
     </div>
@@ -398,8 +398,8 @@
             <div class="card food">
                 <div class="card-header">
                     <span class="time-badge">21:30</span>
-                    <a href="https://www.google.com/maps/search/Sukiya+Takadanobaba/" target="_blank"
-                        class="map-btn">📍 Sukiya 高田馬場</a>
+                    <a href="https://www.google.com/maps/search/Sukiya+Takadanobaba/" target="_blank" class="map-btn">📍
+                        Sukiya 高田馬場</a>
                 </div>
                 <h3 class="card-title">晚餐/宵夜：Sukiya (すき家)</h3>
                 <div class="card-content">
@@ -478,7 +478,7 @@
                 </div>
             </div>
 
-          <div class="card food">
+            <div class="card food">
                 <div class="card-header">
                     <span class="time-badge">12:30</span>
                     <a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Minami+Ikebukuro" target="_blank"
@@ -655,7 +655,8 @@
                 <h3 class="card-title">和服體驗 (2-3F)</h3>
                 <div class="card-content">
                     地址：1-11-1 Hanakawado (隅田公園旁)。<br>
-                    內容：挑選和服、著裝 (約1小時)。
+                    內容：挑選和服、著裝 (約1小時)。<br>
+                    <span style="color:#c5221f; font-size:0.85rem;">⚠️ 費用約 ¥9,000 (現場付)</span>
                 </div>
             </div>
 
@@ -705,8 +706,7 @@
                 <div class="card-content">
                     <ul>
                         <li><a href="https://www.google.com/maps/search/?api=1&query=墨田水族館" target="_blank">墨田水族館
-                                (5F-6F)</a>：參觀企鵝與水母。</li>
-                        <li>東京晴空塔展望台：欣賞夕陽與夜景。</li>
+                                (5F-6F)</a>：參觀企鵝與水母 (已列入預算)。</li>
                         <li>東京晴空街道 Solamachi：晚餐與購物。</li>
                     </ul>
                 </div>
@@ -1115,47 +1115,101 @@
         <div id="info" class="day-section">
             <div class="card">
                 <h3 class="card-title" style="margin-bottom:20px;">💰 預估花費總表 (2位成人)</h3>
+
                 <div class="info-grid">
                     <div class="info-row">
-                        <span>交通 (含機場)</span>
-                        <span class="price">¥26,000</span>
+                        <span>✈️ 捷星航空 (去程)</span>
+                        <div>
+                            <span class="price">NT$ 10,246</span>
+                            <span
+                                style="background:#e6f4ea; color:#1e8e3e; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">已付</span>
+                        </div>
                     </div>
-                    <div class="note" style="margin-bottom:10px;">Skyliner 來回 + 每日地鐵/JR + Day 4 計程車</div>
+                    <div class="info-row">
+                        <span>✈️ 虎航 (回程)</span>
+                        <div>
+                            <span class="price">NT$ 16,739</span>
+                            <span
+                                style="background:#e6f4ea; color:#1e8e3e; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">已付</span>
+                        </div>
+                    </div>
 
                     <div class="info-row">
-                        <span>餐飲</span>
-                        <span class="price">¥80,000</span>
+                        <span>🏠 民宿 (7天6夜)</span>
+                        <div>
+                            <span class="price">NT$ 16,204</span>
+                            <span
+                                style="background:#e6f4ea; color:#1e8e3e; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">已付</span>
+                        </div>
                     </div>
-                    <div class="note" style="margin-bottom:10px;">含 Day 4 燒肉大餐、Day 3 和牛/壽喜燒等</div>
 
                     <div class="info-row">
-                        <span>門票/體驗</span>
-                        <span class="price">¥30,000</span>
+                        <span>📱 Sim 卡</span>
+                        <div>
+                            <span class="price">NT$ 408</span>
+                            <span
+                                style="background:#e6f4ea; color:#1e8e3e; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">已付</span>
+                        </div>
                     </div>
-                    <div class="note" style="margin-bottom:10px;">和服、Shibuya Sky、晴空塔水族館、溫泉</div>
+                    <div class="info-row">
+                        <span>🚄 Skyliner (來回預估)</span>
+                        <div>
+                            <span class="price">NT$ 1,700</span>
+                            <span
+                                style="background:#fce8e6; color:#c5221f; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">未付</span>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <span>👘 淺草和服 (現場付)</span>
+                        <div>
+                            <span class="price">¥ 9,000</span>
+                            <span
+                                style="background:#fce8e6; color:#c5221f; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">未付</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <span>🐧 墨田水族館</span>
+                        <div>
+                            <span class="price">NT$ 1,000</span>
+                            <span
+                                style="background:#fce8e6; color:#c5221f; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">未付</span>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <span>🏥 旅遊保險</span>
+                        <div>
+                            <span class="price">未定</span>
+                            <span
+                                style="background:#fce8e6; color:#c5221f; font-size:0.8rem; padding:2px 6px; border-radius:4px; margin-left:5px;">未訂</span>
+                        </div>
+                    </div>
 
                     <div class="info-row" style="border-top: 2px solid #ddd; padding-top:10px; margin-top:10px;">
-                        <strong style="color:var(--primary-dark)">總計 (不含購物)</strong>
-                        <strong class="price" style="font-size:1.2rem;">¥136,000</strong>
+                        <strong style="color:var(--primary-dark)">目前已付總額</strong>
+                        <strong class="price" style="color:#1e8e3e;">NT$ 43,597</strong>
                     </div>
-                    <div class="note">平均一人約 ¥68,000 (約台幣 14,500 元)</div>
+                    <div class="note">現場需準備日圓現金 (交通卡儲值、餐飲、和服等)</div>
                 </div>
             </div>
 
             <div class="card">
-                <h3 class="card-title">📝 需預約項目</h3>
+                <h3 class="card-title">📝 待辦清單</h3>
                 <div class="card-content">
                     <ul>
-                        <li><strong>Shibuya SKY (Day 4):</strong> 1/23 (四) 16:00 入場 (1/9 00:00搶)。</li>
-                        <li><strong>晴空塔+墨田水族館 (Day 3):</strong> 1/22 (三) 12/23 左右買票。</li>
-                        <li><strong>燒肉 Nikudarake (Day 4):</strong> 1/23 (四) 18:30 (TableCheck/Google Maps)。</li>
-                        <li><strong>串若丸 (Day 6):</strong> 1/25 (六) 18:00 (電話預約或白金秘書)。</li>
-                        <li><strong>Skyliner 車票:</strong> 去/回建議預先購買。</li>
-                        <li><strong>淺草愛和服 (Day 3):</strong> 已預約 09:30。</li>
+                        <li><strong>VJW 入境登記：</strong><a href="https://vjw-lp.digital.go.jp/zh-hant/" target="_blank"
+                                style="color: var(--primary); text-decoration: underline;">官方網站連結</a> (記得截圖 QR Code)。
+                        </li>
+                        <li><strong>保險：</strong> 出發前記得投保。</li>
+                        <li><strong>Shibuya SKY (Day 4):</strong> 1/23 場次 (1/9 00:00 開搶)。</li>
+                        <li><strong>燒肉 Nikudarake (Day 4):</strong> 記得預約。</li>
+                        <li><strong>日幣兌換：</strong> 建議準備 ¥50,000 - ¥70,000 現金備用。</li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 
